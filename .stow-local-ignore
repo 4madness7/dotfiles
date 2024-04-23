@@ -23,5 +23,5 @@ _darcs
 ^/COPYING
 
 # my stuff
-todo
-sddm
+get-installed-packages
+installer
