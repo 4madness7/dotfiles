@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# lists all packages installed using pacman
+pacman -Qqen > ~/dotfiles/pacman-installed-pkgs
+
+# lists all packages installed from the aur
+pacman -Qqem > ~/dotfiles/aur-installed-pkgs

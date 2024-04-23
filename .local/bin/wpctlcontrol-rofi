@@ -1,0 +1,62 @@
+#!/usr/bin/env bash
+
+start='' # start of the range
+end='' # end of the range
+
+title='' # title displayed by rofi
+
+# check_easyeffects() {
+# }
+
+case $1 in
+    sink)
+        start='Sinks:'
+        end='Sources:'
+
+        title='Sinks'
+    ;;
+    source)
+        start='Sources:'
+        end='Filters:'
+
+        title='Sources'
+    ;;
+    *)
+        echo "Failed. Please specify what you want to see"
+        echo ""
+        echo "sink - to change between sinks (output devices)"
+        echo "source - to change between sources (input devices)"
+        echo ""
+        echo "Eg. wpctlcontrol-rofi sink"
+        exit 1
+    ;;
+esac
+
+
+choices=$(wpctl status -k | # gets status of wireplumber
+            sed -n "/^Audio$/,/^Video$/p" | # cuts ouput to only audio
+            sed -n "/$start/,/$end/{/$start/b;/$end/b;p}" | # gets only sinks
+            sed '$ d' | # removes last line
+            sed 's/ │  / /g' | # cleans output
+            sed -r 's/\s+/ /g' | # cleans output
+            sed '/Easy Effects/d') # removes easyeffects sink
+
+selected=$(printf "$choices" | # prints all sinks
+            rofi -dmenu -p "$title" | # activates rofi dmenu
+            sed "s/\*//g") # cleans output
+
+chosen=$(echo $selected | # prints selected
+        cut -f1 -d'.') # gets only the sink id
+
+# if id_sink is NOT empty, change the default to selected sink
+if [[ -n $chosen ]]; then
+    if [[ "$selected" == *"ALC256 Analog"* ]] && [[ "$1" == "sink" ]]; then
+        $HOME/.local/bin/easyeffects-rofi
+    elif [[ "$selected" != *"ALC256 Analog"* ]] && [[ "$1" == "sink" ]] ;then
+        is_running=$(pgrep 'easyeffects')
+        if [[ -n $is_running ]]; then
+            kill -15 $is_running
+        fi
+    fi
+    wpctl set-default $chosen
+fi

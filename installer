@@ -1,0 +1,48 @@
+#!/usr/bin/env bash
+
+echo "Installing paru."
+sudo pacman -S --needed base-devel
+git clone https://aur.archlinux.org/paru.git ~/paru
+cd ~/paru
+makepkg -si
+echo "Finished installing paru."
+
+echo "Installing oh my zsh."
+# installing oh my zsh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+echo "Finished installing oh my zsh."
+
+echo "Installing zsh-syntax-highlighting."
+# installing zsh-syntax-highlighting
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+echo "Finished installing zsh-syntax-highlighting."
+
+echo "Installing zsh-autosuggestions."
+# installing zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+echo "Finished installing zsh-autosuggestions."
+
+echo "Installing theme."
+# installing theme
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+echo "Finished installing theme."
+
+# installing sddm rose pine theme
+echo "Installing sddm rose pine theme."
+sudo git clone https://github.com/lwndhrst/sddm-rose-pine.git /usr/share/sddm/themes/sddm-rose-pine
+echo "Finished installing sddm rose pine theme."
+
+# creating sddm conf file
+mkdir /etc/sddm.conf.d
+
+echo "Creating sddm conf file"
+sudo cp /usr/lib/sddm/sddm.conf.d/sddm.conf /etc/sddm.conf.d/sddm.conf
+
+echo "
+=============================
+REMEMBER TO CHANGE SDDM THEME
+=============================
+
+Go to /etc/sddm.conf.d/sddm.conf.
+In the [Theme] section simply add the themes name: Current=sddm-rose-pine
+"

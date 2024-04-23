@@ -1,0 +1,43 @@
+#!/usr/bin/env bash
+
+t_flag=''
+f_flag=''
+
+print_usage() {
+    echo "Usage: widget-manager -t <string> -f <int>
+
+Flags:
+    -t      text to show in the widget.                 Eg. 'Volume'
+    -f      fill to show in the widget progress bar.    Eg. '50'
+
+If these flags are missing or are incorrect values, it'll not work."
+}
+
+while getopts 't:f:' flag; do
+    case "${flag}" in
+        t) t_flag="${OPTARG}" ;;
+        f) f_flag="${OPTARG}" ;;
+        ?) print_usage
+           exit 1 ;;
+    esac
+done
+
+python_wrapper="vb-sleep-wrapper"
+
+running_script_pid=$(ps -aux |
+                grep "$python_wrapper" |
+                grep "python" |
+                tr -s " " |
+                cut -d" " -f2)
+
+if [[ -n "$running_script_pid" ]]; then
+    kill -15 "$running_script_pid"
+fi
+
+monitors=( $(hyprctl monitors | grep 'ID' | cut -d' ' -f2) )
+
+for i in "${!monitors[@]}"; do
+    eww open --screen $i --id "vb$i" volume-brightness --arg text="$t_flag" --arg fill="$f_flag"
+done
+
+$HOME/.local/bin/$python_wrapper

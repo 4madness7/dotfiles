@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+print_usage() {
+    echo "Usage: lidswitch [on|off]
+
+If attributes are missing or there are incorrect values, it'll not work."
+}
+
+monitors=( $(hyprctl monitors | grep "^Monitor" | cut -d" " -f2) ) # get all monitors and put that in an array
+
+case $1 in
+    on)
+        hyprctl keyword monitor "eDP-1, disable"
+        if (( ${#monitors[@]} <= 1 )); then
+            pidof hyprlock || hyprlock
+        fi
+        ;;
+    off)
+        hyprctl keyword monitor "eDP-1, 1920x1080, 0x0, 1"
+        ;;
+    *) print_usage
+        ;;
+esac

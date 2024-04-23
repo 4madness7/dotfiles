@@ -1,0 +1,75 @@
+$base: #191724;
+$surface: #1f1d2e;
+$overlay: #26233a;
+$muted: #6e6a86;
+$subtle: #908caa;
+$text: #e0def4;
+$love: #eb6f92;
+$gold: #f6c177;
+$rose: #ebbcba;
+$pine: #31748f;
+$foam: #9ccfd8;
+$iris: #c4a7e7;
+$highlightLow: #21202e;
+$highlightMed: #403d52;
+$highlightHigh: #524f67;
+
+// css reset for gtk theme
+* {
+    all: unset
+}
+
+$bar-radius: 10px;
+
+// volume-brightness pop
+.volume-brightness {
+    background: $base;
+    color: $text;
+    font-weight: 700;
+    border-radius: $bar-radius;
+    font-size: 1.25rem;
+}
+
+// border of volume
+.volume-brightness .progress>* {
+    border: 1px solid $muted;
+    border-radius: $bar-radius;
+}
+
+// fill of volume
+.volume-brightness .progress>*>* {
+    background: $iris;
+    border-radius: $bar-radius;
+}
+
+$calendar-radius: 10px;
+
+// calendar-view
+.calendar-view calendar {
+    background: $base;
+    font-size: 16px;
+    padding: 8px;
+    margin-left: 5px;
+    border-radius: $calendar-radius;
+}
+
+.calendar-view calendar:selected {
+    color: $rose;
+    font-weight: bold;
+}
+
+.calendar-view calendar.header {
+    color: $iris;
+}
+
+.calendar-view calendar.highlight {
+    color: $love;
+}
+
+.calendar-view calendar.button {
+    color: $gold;
+}
+
+.calendar-view calendar:indeterminate {
+    color: $muted;
+}

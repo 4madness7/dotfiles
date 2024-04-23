@@ -1,0 +1,77 @@
+@define-color base #191724;
+@define-color surface #1f1d2e;
+@define-color overlay #26233a;
+@define-color muted #6e6a86;
+@define-color subtle #908caa;
+@define-color text #e0def4;
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ebbcba;
+@define-color pine #31748f;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color highlightLow #21202e;
+@define-color highlightMed #403d52;
+@define-color highlightHigh #524f67;
+
+window#waybar {
+    background-color: alpha(@base, 0.8);
+    border-radius: 4px;
+    color: @rose;
+}
+
+/* workspaces */
+#workspaces button {
+    color: @muted;
+    border-radius: 4px;
+}
+
+#workspaces button:hover {
+    font-weight: 900;
+    color: @gold;
+}
+
+#workspaces button.active {
+    font-weight: 900;
+    color: @rose;
+}
+
+/* clock */
+#clock {
+    padding-right: 10px;
+    font-weight: 600;
+}
+
+/* clock */
+#keyboard-state {
+    font-size: 20px;
+}
+
+#keyboard-state label {
+    color: @muted;
+}
+
+#keyboard-state label.locked {
+    color: @rose;
+}
+
+/* Battery */
+#battery.warning {
+    color: @gold;
+}
+
+#battery.critical {
+    color: @love;
+}
+
+#battery.charging.plugged {
+    color: @foam;
+}
+
+#battery.charging {
+    color: @foam;
+}
+
+#battery.plugged {
+    color: @foam;
+}

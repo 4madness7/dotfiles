@@ -1,0 +1,86 @@
+#!/usr/bin/env bash
+
+max_volume=100
+volume_step=5
+
+s_flag=""
+o_flag=""
+icon=""
+
+print_usage() {
+    echo "Usage: wp-audio-check -s [source|sink] -o [inc|dec]
+
+Flags:
+    -s      selects between audio source or audio sink [source|sink]
+    -o      selects between increment or decrement [inc|dec]
+
+If these flags are missing or are incorrect values, it'll not work."
+}
+
+while getopts 's:o:' flag; do
+    case "${flag}" in
+        s) case "${OPTARG}" in
+                sink)
+                    s_flag="@DEFAULT_AUDIO_SINK@"
+                    icon="󰕾" ;;
+                source)
+                    s_flag="@DEFAULT_AUDIO_SOURCE@"
+                    icon="" ;;
+                *) print_usage
+                    exit 1 ;;
+            esac
+            ;;
+        o) case "${OPTARG}" in
+                inc) o_flag="$volume_step%+" ;;
+                dec) o_flag="$volume_step%-" ;;
+                *) print_usage
+                    exit 1 ;;
+            esac
+            ;;
+        ?) print_usage
+           exit 1 ;;
+    esac
+done
+
+current_volume=$(wpctl get-volume $s_flag | # gets current volume
+                    cut -d' ' -f2 | # removes 'Volume: ' before value
+                    sed "s/\.//g") # removes '.' from volume
+
+next_step=0
+if [[ $o_flag == *"+"* ]]; then
+    next_step=$(("10#$current_volume" + $volume_step))
+else
+    next_step=$(("10#$current_volume" - $volume_step))
+fi
+
+if [ "$next_step" -gt "$max_volume" ]; then
+    exit 0
+fi
+
+wpctl set-volume $s_flag $o_flag
+
+# widget managment
+
+current_volume=$(wpctl get-volume $s_flag | # gets current volume
+                    cut -d' ' -f2 | # removes 'Volume: ' before value
+                    sed "s/\.//g") # removes '.' from volume
+#
+# python_wrapper="vb-sleep-wrapper"
+#
+# running_script_pid=$(ps -aux |
+#                 grep "$python_wrapper" |
+#                 grep "python" |
+#                 tr -s " " |
+#                 cut -d" " -f2)
+#
+# if [[ -n "$running_script_pid" ]]; then
+#     kill -SIGTERM "$running_script_pid"
+# fi
+#
+# monitors=( $(hyprctl monitors | grep 'ID' | cut -d' ' -f2) )
+#
+# for i in "${!monitors[@]}"; do
+#     eww open --screen $i --id "vb$i" volume-brightness --arg text="Volume $icon" --arg fill=$current_volume
+# done
+
+$HOME/.local/bin/widget-manager -t "Volume $icon" -f "$current_volume"

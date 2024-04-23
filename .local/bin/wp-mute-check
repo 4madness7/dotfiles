@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+s_flag=""
+
+print_usage() {
+    echo "Usage: wp-mute-check -s [source|sink]
+
+Flags:
+    -s      selects between audio source or audio sink [source|sink]
+
+If these flags are missing or are incorrect values, it'll not work."
+}
+
+while getopts 's:' flag; do
+    case "${flag}" in
+        s) case "${OPTARG}" in
+                sink) s_flag="@DEFAULT_AUDIO_SINK@" ;;
+                source) s_flag="@DEFAULT_AUDIO_SOURCE@" ;;
+                *) print_usage
+                    exit 1 ;;
+            esac
+            ;;
+        ?) print_usage
+           exit 1 ;;
+    esac
+done
+
+wpctl set-mute $s_flag toggle
+
+# widget managment
+muted=$(wpctl get-volume $s_flag | grep '[MUTED]')
+
+icon=''
+if [[ -n "$muted" ]]; then
+    if [[ "$s_flag" ==  *"SINK"* ]]; then
+        icon='󰖁'
+    elif [[ "$s_flag" ==  *"SOURCE"* ]]; then
+        icon=''
+    fi
+    current_volume=0
+else
+    if [[ "$s_flag" ==  *"SINK"* ]]; then
+        icon='󰕾'
+    elif [[ "$s_flag" ==  *"SOURCE"* ]]; then
+        icon=''
+    fi
+    current_volume=$(wpctl get-volume $s_flag | # gets current volume
+                        cut -d' ' -f2 | # removes 'Volume: ' before value
+                        sed "s/\.//g") # removes '.' from volume
+fi
+
+# python_wrapper="vb-sleep-wrapper"
+#
+# running_script_pid=$(ps -aux |
+#                 grep "$python_wrapper" |
+#                 grep "python" |
+#                 tr -s " " |
+#                 cut -d" " -f2)
+#
+# if [[ -n "$running_script_pid" ]]; then
+#     kill -SIGTERM "$running_script_pid"
+# fi
+#
+# monitors=( $(hyprctl monitors | grep 'ID' | cut -d' ' -f2) )
+#
+# for i in "${!monitors[@]}"; do
+#     eww open --screen $i --id "vb$i" volume-brightness --arg text="Volume $icon" --arg fill=$current_volume
+# done
+#
+# $HOME/.local/bin/$python_wrapper
+
+$HOME/.local/bin/widget-manager -t "Volume $icon" -f "$current_volume"

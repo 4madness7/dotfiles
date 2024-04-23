@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+brightness_step=5
+
+o_flag=""
+
+print_usage() {
+    echo "Usage: brightness-control -o [inc|dec]
+
+Flags:
+    -o      selects between increment or decrement [inc|dec]
+
+If these flags are missing or are incorrect values, it'll not work."
+}
+
+while getopts 'o:' flag; do
+    case "${flag}" in
+        o) case "${OPTARG}" in
+                inc) o_flag="$brightness_step%+" ;;
+                dec) o_flag="$brightness_step%-" ;;
+                *) print_usage
+                    exit 1 ;;
+            esac ;;
+        ?) print_usage
+           exit 1 ;;
+    esac
+done
+
+brightnessctl set $o_flag > /dev/null
+
+brightness_perc=$(brightnessctl info |
+                    grep "Current" |
+                    cut -d"(" -f2 |
+                    cut -d"%" -f1)
+
+$HOME/.local/bin/widget-manager -t "Brightness " -f "$brightness_perc"

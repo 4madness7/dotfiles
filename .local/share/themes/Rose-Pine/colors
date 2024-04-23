@@ -1,0 +1,57 @@
+$base: #191724;
+$surface: #1f1d2e;
+$overlay: #26233a;
+$muted: #6e6a86;
+$subtle: #908caa;
+$text: #e0def4;
+$love: #eb6f92;
+$gold: #f6c177;
+$rose: #ebbcba;
+$pine: #31748f;
+$foam: #9ccfd8;
+$iris: #c4a7e7;
+$highlightLow: #21202e;
+$highlightMed: #403d52;
+$highlightHigh: #524f67;
+
+[GeneralColors]
+window.color=#1C0F2E
+base.color=#25143D
+alt.base.color=#49297A66
+button.color=#3b2163
+light.color=#000000
+mid.light.color=#000000
+dark.color=#000000
+mid.color=#000000
+highlight.color=#FAD000
+inactive.highlight.color=#FAD000
+text.color=#fefefe
+window.text.color=#fefefe
+button.text.color=#fefefe
+disabled.text.color=#fefefe78
+tooltip.text.color=#fefefe
+highlight.text.color=#1E1E3F
+link.color=#80fcff
+link.visited.color=#00B5B8
+progress.indicator.text.color=#fefefe
+
+[GeneralColors]
+window.color=#191724
+base.color=#1f1d2e
+alt.base.color=#c4a7e766
+button.color=#c4a7e7
+light.color=#000000
+mid.light.color=#000000
+dark.color=#000000
+mid.color=#000000
+highlight.color=#ebbcba
+inactive.highlight.color=#ebbcba
+text.color=#e0def4
+window.text.color=#e0def4
+button.text.color=#e0def4
+disabled.text.color=#e0def478
+tooltip.text.color=#e0def4
+highlight.text.color=#524f67
+link.color=#9ccfd8
+link.visited.color=#31748f
+progress.indicator.text.color=#e0def4

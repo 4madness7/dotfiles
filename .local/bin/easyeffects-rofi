@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+divider='-----'
+
+is_running=$(pgrep 'easyeffects')
+activated=''
+if [[ -n $is_running ]]; then
+    activated='Active'
+else
+    activated='Not active'
+fi
+
+choice=$(printf "Activate EasyEffects\nDeactivate EasyEffects\n$divider\nCurrent state: $activated" |
+                rofi -dmenu -p "EasyEffects")
+
+case $choice in
+    'Activate EasyEffects')
+        if [[ -z $is_running ]]; then
+            easyeffects --gapplication-service &
+            easyeffects -l AdvancedAutoGain &
+        fi
+        ;;
+    'Deactivate EasyEffects')
+        if [[ -n $is_running ]]; then
+            kill -15 $is_running
+        fi
+        ;;
+    *)
+        exit 0
+        ;;
+esac

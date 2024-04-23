@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+monitor_id=$(hyprctl activeworkspace | grep monitorID | cut -d":" -f2)
+
+eww open --screen $monitor_id --id calendar-waybar calendar-view --arg day=$(date "+%d") --arg month=$(date "+%m") --arg year=$(date "+%Y")

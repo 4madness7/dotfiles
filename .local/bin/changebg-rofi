@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+monitors=( $(hyprctl monitors | grep "^Monitor" | cut -d" " -f2) ) # get all monitors and put that in an array
+
+wallpaper_dir="$HOME/.config/wallpapers/"
+wallpaper_ext=".png"
+
+wallpaper_list=$(find $wallpaper_dir -type f -name "*$wallpaper_ext" |
+            cut -d"/" -f6- |
+            cut -d"." -f1)
+
+chosen=$(printf "$wallpaper_list" |
+            rofi -dmenu -p "Wallpapers" -matching "fuzzy" -i)
+
+new_wallpaper_dir="$wallpaper_dir$chosen$wallpaper_ext"
+
+hyprctl hyprpaper preload $new_wallpaper_dir
+
+for value in "${monitors[@]}"
+do
+    hyprctl hyprpaper wallpaper "${value},$new_wallpaper_dir"
+done
+
+hyprctl hyprpaper unload all

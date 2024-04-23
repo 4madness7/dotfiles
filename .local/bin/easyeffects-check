@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+default_sink=$(wpctl status -k | # gets status of wireplumber
+            sed -n "/^Audio$/,/^Video$/p" | # cuts ouput to only audio
+            sed -n "/Sinks:/,/Sources:/{/Sinks:/b;/Sources:/b;p}" | # gets only sinks
+            grep "*")
+
+if [[ "$default_sink" == *"ALC256 Analog"* ]]; then
+    $HOME/.local/bin/easyeffects-rofi
+fi
