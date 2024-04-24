@@ -28,7 +28,8 @@
     "hyprland/window": {
         "max-length": 50,
         "rewrite": {
-            "(tmux[ ]*.*)": "$1 - Alacritty"
+            "(tmux[ ]*.*)": "$1 - Alacritty",
+            "~/.local/bin/tmux-sessionizer": "tmux - Alacritty"
         }
     },
     "tray": {
