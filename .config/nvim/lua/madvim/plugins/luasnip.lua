@@ -15,5 +15,11 @@ return {
                 text({ '<script>', '</script>', '', '<style>', '</style>' }),
             })
         })
+
+        luasnip.add_snippets("svelte", {
+            snippet({ trig = 'component-ts', desc = 'svelte component structure' }, {
+                text({ '<script lang="ts">', '</script>', '', '<style>', '</style>' }),
+            })
+        })
     end
 }
