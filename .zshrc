@@ -68,6 +68,9 @@ alias vim="nvim"
 alias vi="nvim"
 alias vimDiff="nvim"
 alias ts="~/.local/bin/tmux-sessionizer"
+alias rm-orphans='sudo pacman -Rsn $(pacman -Qdtq)'
+alias rm-cache-bb='bleachbit -c system.cache system.localizations system.trash system.tmp'
+alias rm-cache-pac='sudo pacman -Sc'
 
 # shell integratons
 eval "$(fzf --zsh)"
