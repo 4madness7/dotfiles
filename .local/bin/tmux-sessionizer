@@ -3,7 +3,8 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(find ~/dotfiles ~/dotfiles/.local ~/dotfiles/.local/share ~/dotfiles/.config ~/Documenti/Obsidian\ Vaults/Test/.obsidian/plugins -mindepth 1 -maxdepth 1 -type d | fzf)
+    full_list=$(printf "$HOME/dotfiles\n" && find ~/dotfiles ~/dotfiles/.local ~/dotfiles/.local/share ~/dotfiles/.config ~/Documenti/Obsidian\ Vaults/Test/.obsidian/plugins -mindepth 1 -maxdepth 1 -type d)
+    selected=$(echo "$full_list" | fzf)
 fi
 if [[ -z $selected ]]; then
     exit 0
@@ -22,4 +23,9 @@ if ! tmux has-session -t=$selected_name 2> /dev/null; then
     tmux new-session -ds "$selected_name" -c "$selected"
 fi
 
-tmux switch-client -t "$selected_name"
+if [[ -n $TMUX ]]; then
+    tmux switch-client -t "$selected_name"
+    exit 0
+fi
+
+tmux attach -t "$selected_name"
