@@ -40,8 +40,8 @@ zinit cdreplay -q
 
 # keybindings
 bindkey -e
-bindkey "^e" backward-word
-bindkey "^i" forward-word
+bindkey "^[[1;5D" backward-word
+bindkey "^[[1;5C" forward-word
 bindkey "^p" history-search-backward
 bindkey "^n" history-search-forward
 
