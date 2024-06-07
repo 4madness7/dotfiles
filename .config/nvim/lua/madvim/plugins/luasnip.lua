@@ -22,12 +22,6 @@ return {
             })
         })
 
-        luasnip.add_snippets("svelte", {
-            snippet({ trig = 'component-ts', desc = 'svelte component structure' }, {
-                text({ '<script lang="ts">', '</script>', '', '<style>', '</style>' }),
-            })
-        })
-
         local snip_js_fun = {
             snippet({ trig = 'function', desc = 'javascript function structure' }, {
                 text({'function () {', '}'}),
