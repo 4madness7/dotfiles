@@ -19,6 +19,7 @@ hyprctl hyprpaper preload $new_wallpaper_dir
 for value in "${monitors[@]}"
 do
     hyprctl hyprpaper wallpaper "${value},$new_wallpaper_dir"
+    sleep 0.1
 done
 
 hyprctl hyprpaper unload all
