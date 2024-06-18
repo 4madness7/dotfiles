@@ -76,3 +76,10 @@ alias rm-cache-pac='sudo pacman -Sc'
 
 # shell integratons
 eval "$(fzf --zsh)"
+
+# bun completions
+[ -s "/home/marcom/.bun/_bun" ] && source "/home/marcom/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

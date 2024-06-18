@@ -2,6 +2,7 @@ alacritty
 amd-ucode
 anydesk-bin
 ark
+aylurs-gtk-shell
 base
 base-devel
 blender
@@ -16,6 +17,7 @@ btrfs-progs
 chaotic-keyring
 chaotic-mirrorlist
 cliphist
+cmatrix
 cobang
 cowsay
 discord
@@ -26,6 +28,7 @@ efibootmgr
 eww
 firefox
 fzf
+gimp
 git
 github-cli
 gnome-bluetooth-3.0
@@ -77,6 +80,7 @@ obsidian
 okular
 onlyoffice-bin
 openssl-1.1
+opentabletdriver
 paru
 pdfslicer
 pipewire
@@ -101,6 +105,7 @@ slurp
 smartmontools
 sof-firmware
 speedtest-cli
+steam
 stow
 swappy
 swaync
@@ -114,6 +119,7 @@ tree
 ttf-nerd-fonts-symbols
 ttf-nerd-fonts-symbols-mono
 udiskie
+unzip
 vim
 virt-viewer
 vulkan-intel
@@ -125,6 +131,7 @@ wireless_tools
 wireplumber
 wofi
 wtype
+xdg-desktop-portal-gtk
 xdg-desktop-portal-hyprland-git
 xdg-utils
 xf86-video-amdgpu
@@ -133,5 +140,6 @@ xf86-video-nouveau
 xf86-video-vmware
 xorg-server
 xorg-xinit
+yt-dlp
 zram-generator
 zsh
