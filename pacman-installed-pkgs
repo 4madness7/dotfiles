@@ -5,6 +5,7 @@ ark
 aylurs-gtk-shell
 base
 base-devel
+bat
 blender
 bluedevil
 bluez
@@ -13,6 +14,7 @@ brave-bin
 bridge-utils
 brightnessctl
 btop
+btrfs-assistant
 btrfs-progs
 chaotic-keyring
 chaotic-mirrorlist
