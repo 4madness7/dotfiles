@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    full_list=$(printf "$HOME/dotfiles\n" && find ~/dotfiles ~/dotfiles/.local ~/dotfiles/.local/share ~/dotfiles/.config ~/Documenti/Obsidian\ Vaults/Test/.obsidian/plugins -mindepth 1 -maxdepth 1 -type d)
+    full_list=$(printf "$HOME/dotfiles\n" && find ~/projects/personal ~/projects/work ~/dotfiles ~/dotfiles/.local ~/dotfiles/.local/share ~/dotfiles/.config ~/Documenti/Obsidian\ Vaults/Test/.obsidian/plugins -mindepth 1 -maxdepth 1 -type d)
     selected=$(echo "$full_list" | fzf)
 fi
 if [[ -z $selected ]]; then
