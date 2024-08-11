@@ -34,9 +34,29 @@ return {
             local word = vim.fn.expand("<cword>")
             builtin.grep_string({ search = word })
         end)
+
         vim.keymap.set("n", "<leader>pWs", function()
             local word = vim.fn.expand("<cWORD>")
             builtin.grep_string({ search = word })
+        end)
+
+        vim.keymap.set("v", "<leader>ss", function()
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<esc>", true, false, true), 'x', true)
+
+            local start_sel = vim.fn.getpos("'<");
+            local end_sel = vim.fn.getpos("'>");
+            local start_line = start_sel[2];
+            local end_line = end_sel[2];
+            local start_col = start_sel[3];
+            local end_col = end_sel[3];
+
+            if start_line == end_line then
+                local line = vim.api.nvim_buf_get_lines(0, start_line - 1, end_line, false)[1]
+
+                builtin.grep_string({ search = string.sub(line, start_col, end_col) })
+            else
+                print("Multiline search not available.")
+            end
         end)
 
         vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
