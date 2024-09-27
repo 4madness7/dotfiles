@@ -1,44 +1,152 @@
+@define-color base #191724;
+@define-color surface #1f1d2e;
+@define-color overlay #26233a;
+@define-color muted #6e6a86;
+@define-color subtle #908caa;
+@define-color text #e0def4;
+@define-color love #eb6f92;
+@define-color gold #f6c177;
+@define-color rose #ebbcba;
+@define-color pine #31748f;
+@define-color foam #9ccfd8;
+@define-color iris #c4a7e7;
+@define-color highlightLow #21202e;
+@define-color highlightMed #403d52;
+@define-color highlightHigh #524f67;
+
 window.bar {
-    background-color: @theme_bg_color;
-    color: @theme_fg_color;
+    background-color: alpha(@base, 0.8);
+    border-radius: 4px;
+    color: @rose;
 }
 
 button {
-    min-width: 0;
-    padding-top: 0;
-    padding-bottom: 0;
     background-color: transparent;
+    border: none;
+    padding: 0;
+    color: @rose;
+    border-radius: 4px;
 }
 
-button:active {
-    background-color: @theme_selected_bg_color;
+.workspaces button {
+    color: @muted;
 }
 
-button:hover {
-    border-bottom: 3px solid @theme_fg_color;
-}
-
-label {
-    font-weight: bold;
+.workspaces button:hover {
+    font-weight: 900;
+    color: @gold;
 }
 
 .workspaces button.focused {
-    border-bottom: 3px solid @theme_selected_bg_color;
+    font-weight: 900;
+    color: @rose;
 }
 
-.client-title {
-    color: @theme_selected_bg_color;
+.caps-lock-disabled {
+    font-weight: 900;
+    color: @muted;
+}
+
+.caps-lock-enabled {
+    font-weight: 900;
+    color: @rose;
+}
+
+
+window.notification-popups box.notifications {
+    padding: .5em;
+}
+
+.icon {
+    min-width: 68px;
+    min-height: 68px;
+    margin-right: 1em;
+}
+
+.icon image {
+    font-size: 58px;
+    /* to center the icon */
+    margin: 5px;
+    color: @theme_fg_color;
+}
+
+.icon box {
+    min-width: 68px;
+    min-height: 68px;
+    border-radius: 7px;
 }
 
 .notification {
-    color: yellow;
+    min-width: 350px;
+    border-radius: 11px;
+    padding: 1em;
+    margin: .5em;
+    border: 1px solid @wm_borders_edge;
+    background-color: @theme_bg_color;
 }
 
-levelbar block,
-highlight {
-    min-height: 10px;
+.notification.critical {
+    border: 1px solid lightcoral;
 }
 
-.none {
-    opacity: 0;
+.title {
+    color: @theme_fg_color;
+    font-size: 1.4em;
 }
+
+.body {
+    color: @theme_unfocused_fg_color;
+}
+
+.actions .action-button {
+    margin: 0 .4em;
+    margin-top: .8em;
+}
+
+.actions .action-button:first-child {
+    margin-left: 0;
+}
+
+.actions .action-button:last-child {
+    margin-right: 0;
+}
+
+/* button { */
+/*     min-width: 0; */
+/*     padding-top: 0; */
+/*     padding-bottom: 0; */
+/*     background-color: transparent; */
+/* } */
+/**/
+/* button:active { */
+/*     background-color: @theme_selected_bg_color; */
+/* } */
+/**/
+/* button:hover { */
+/*     border-bottom: 3px solid @theme_fg_color; */
+/* } */
+/**/
+/* label { */
+/*     font-weight: bold; */
+/* } */
+/**/
+/* .workspaces button.focused { */
+/*     border-bottom: 3px solid @theme_selected_bg_color; */
+/* } */
+/**/
+/* .client-title { */
+/*     color: @theme_selected_bg_color; */
+/* } */
+/**/
+/* .notification { */
+/*     color: yellow; */
+/* } */
+/**/
+/* levelbar block, */
+/* highlight { */
+/*     min-height: 10px; */
+/* } */
+/**/
+/* .none { */
+/*     opacity: 0; */
+/* } */
