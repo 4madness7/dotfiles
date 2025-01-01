@@ -19,14 +19,13 @@
   {
 
       nixosConfigurations = {
-          madnix = nixpkgs.lib.nixosSystem {
+          madnix-laptop = nixpkgs.lib.nixosSystem {
               specialArgs = { inherit system; };
 
               modules = [
-              ./nixos/configuration.nix
+              ./nixos/laptop/configuration.nix
               ];
           };
       };
-
   };
 }

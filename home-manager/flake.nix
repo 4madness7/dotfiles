@@ -9,7 +9,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-    ags.url = "github:aylur/ags/v2";
+    # ags.url = "github:aylur/ags/v2";
   };
 
   outputs = { nixpkgs, nixpkgsOld, home-manager, ... }@inputs:

@@ -14,7 +14,7 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "madnix"; # Define your hostname.
+  networking.hostName = "madnix-laptop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
@@ -152,7 +152,7 @@
     xdgOpenUsePortal = true;
     config = {
       common.default = ["gtk"];
-      hyprland.default = ["gtk" "hyprland"];
+      hyprland.default = ["hyprland" "gtk"];
     };
     extraPortals = [
       pkgs.xdg-desktop-portal-gtk
@@ -176,7 +176,8 @@
         noto-fonts
         fira-code
         fira-code-symbols
-      ] ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
+	nerd-fonts.symbols-only
+      ]; # ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
       fontconfig = {
         defaultFonts = {

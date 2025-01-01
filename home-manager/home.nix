@@ -1,6 +1,6 @@
 {  pkgs, pkgsOld, inputs, ... }:
 {
-  imports = [inputs.ags.homeManagerModules.default];
+  # imports = [inputs.ags.homeManagerModules.default];
 
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -21,15 +21,15 @@
   # The home.packages option allows you to install Nix packages into your
   # environment.
 
-  programs.ags = {
-    enable = true;
+  # programs.ags = {
+  #   enable = true;
 
-    # additional packages to add to gjs's runtime
-    extraPackages = [
-      inputs.ags.packages.${pkgs.system}.battery
-      inputs.ags.packages.${pkgs.system}.apps
-    ];
-  };
+  #   # additional packages to add to gjs's runtime
+  #   extraPackages = [
+  #     inputs.ags.packages.${pkgs.system}.battery
+  #     inputs.ags.packages.${pkgs.system}.apps
+  #   ];
+  # };
 
 
   programs.rofi = {
@@ -79,7 +79,7 @@
     kdePackages.okular
 
     # VMs
-    quickemu
+    # quickemu
 
     # Development
     alacritty
