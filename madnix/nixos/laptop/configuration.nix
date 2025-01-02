@@ -174,14 +174,14 @@
   fonts = {
       packages = with pkgs; [
         noto-fonts
-        fira-code
         fira-code-symbols
-	nerd-fonts.symbols-only
+        nerd-fonts.symbols-only
+        nerd-fonts.jetbrains-mono
       ]; # ++ builtins.filter lib.attrsets.isDerivation (builtins.attrValues pkgs.nerd-fonts);
 
       fontconfig = {
         defaultFonts = {
-          serif = [  "Noto Sans" ];
+          serif = [ "Noto Sans" ];
         };
       };
   };
