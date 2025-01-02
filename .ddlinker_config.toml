@@ -37,6 +37,7 @@ links = [
     "qt5ct",
     "qt6ct",
     "rofi",
+    "swappy",
     "swaync",
     "tmux",
     "topgrade.toml",
