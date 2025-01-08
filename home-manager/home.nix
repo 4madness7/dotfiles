@@ -110,6 +110,7 @@
     jq
     ncdu
     neofetch
+    openssl
     protonup
     ripgrep
     s-tui
