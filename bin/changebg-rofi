@@ -22,4 +22,4 @@ do
     sleep 0.1
 done
 
-hyprctl hyprpaper unload all
+hyprctl hyprpaper unload unused
