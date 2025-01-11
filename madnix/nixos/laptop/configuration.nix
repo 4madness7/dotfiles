@@ -50,9 +50,13 @@
       enable = true;
   };
   # services.desktopManager.plasma6.enable = true;
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+      enable = true;
+      xwayland.enable = true;
+  };
 
   programs.hyprlock.enable = true;
+  services.hypridle.enable = true;
 
   # Optional, hint Electron apps to use Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -157,7 +161,6 @@
     # Hyprland
     hyprpicker
     hyprpaper
-    hypridle
 
     via
     vial
