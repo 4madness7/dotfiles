@@ -43,12 +43,17 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
+  services.xserver.enable = false;
 
   # Enable SDDM and Hyprland.
-  services.displayManager.sddm.enable = true;
-  services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+      enable = true;
+      wayland.enable = true;
+  };
+  # services.desktopManager.plasma6.enable = true;
   programs.hyprland.enable = true;
+
+  programs.hyprlock.enable = true;
 
   # Optional, hint Electron apps to use Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
@@ -89,7 +94,7 @@
   hardware.bluetooth.powerOnBoot = true; # powers up the default Bluetooth controller on boot
 
   # Enable sound with pipewire.
-  hardware.pulseaudio.enable = false;
+  services.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -154,7 +159,6 @@
     hyprpicker
     hyprpaper
     hypridle
-    hyprlock
 
     via
     vial

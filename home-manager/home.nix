@@ -138,6 +138,9 @@
     networkmanager_dmenu
 
     # Dev tools and runtimes
+    sqlite
+    awscli2
+
     gnumake
     gcc
     zig
