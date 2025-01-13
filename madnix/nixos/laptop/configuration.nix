@@ -124,7 +124,7 @@
   users.users.marcom = {
     isNormalUser = true;
     description = "Marco";
-    extraGroups = [ "networkmanager" "wheel" "input" ];
+    extraGroups = [ "networkmanager" "wheel" "input" "docker" ];
     packages = with pkgs; [ ];
     shell = pkgs.zsh;
   };
@@ -149,6 +149,18 @@
   programs.gamemode.enable = true;
 
   # programs.nix-ld.enable = true;
+
+  # Docker stuff
+  virtualisation.docker = {
+      enable = true;
+  };
+  users.extraGroups.docker.members = [ "marcom" ];
+
+  # Virt Manager stuff
+  programs.virt-manager.enable = true;
+  users.groups.libvirtd.members = ["marcom"];
+  virtualisation.libvirtd.enable = true;
+  virtualisation.spiceUSBRedirection.enable = true;
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
