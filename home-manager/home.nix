@@ -138,8 +138,10 @@
     networkmanager_dmenu
 
     # Dev tools and runtimes
-    sqlite
     awscli2
+    google-cloud-sdk
+    sqlite
+    turso-cli
 
     gnumake
     gcc
