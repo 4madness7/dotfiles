@@ -148,7 +148,7 @@
 
   programs.gamemode.enable = true;
 
-  # programs.nix-ld.enable = true;
+  programs.nix-ld.enable = true;
 
   # Docker stuff
   virtualisation.docker = {

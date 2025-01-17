@@ -104,6 +104,7 @@
     easyeffects
     ffmpeg
     fzf # Fuzzy finding
+    glow # view markdown files in terminal
     grim
     gtk3
     hyperfine
