@@ -36,8 +36,17 @@ return {
                 text({'() => { }'}),
             })
         }
+
+        local go_err_if_check = {
+            snippet({ trig = 'errch', desc = 'go err != nil check' }, {
+                text({'if err != nil {', '}'}),
+            })
+        }
+
+
         luasnip.add_snippets("javascript", snip_js_arr_fun)
         luasnip.add_snippets("typescript", snip_js_arr_fun)
         luasnip.add_snippets("svelte", snip_js_arr_fun)
+        luasnip.add_snippets("go", go_err_if_check)
     end
 }
