@@ -149,6 +149,7 @@
     zig
     go
 
+    bun
     nodejs_22
 
     python312Full
