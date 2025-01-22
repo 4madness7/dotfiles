@@ -38,7 +38,7 @@ return {
         }
 
         local go_err_if_check = {
-            snippet({ trig = 'errch', desc = 'go err != nil check' }, {
+            snippet({ trig = 'iferr', desc = 'go err != nil check' }, {
                 text({'if err != nil {', '}'}),
             })
         }
