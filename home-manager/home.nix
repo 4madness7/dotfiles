@@ -1,4 +1,4 @@
-{  pkgs, pkgsOld, inputs, ... }:
+{  pkgs, ... }:
 {
   # imports = [inputs.ags.homeManagerModules.default];
 
@@ -34,7 +34,7 @@
 
   programs.rofi = {
       enable = true;
-      package = pkgsOld.rofi-wayland;
+      # package = pkgsOld.rofi-wayland;
       plugins = with pkgs; [
         rofi-emoji
         rofi-calc

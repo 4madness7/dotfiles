@@ -9,24 +9,25 @@ return {
         use_diagnostic_signs = true
     },
     config = function()
+        local trouble = require("trouble")
         vim.keymap.set("n", "<leader>tt", function()
-            require("trouble").toggle()
+            trouble.toggle("diagnostics")
         end)
 
-        vim.keymap.set("n", "<leader>tw", function()
-            require("trouble").toggle("workspace_diagnostics")
-        end)
-
-        vim.keymap.set("n", "<leader>td", function()
-            require("trouble").toggle("document_diagnostics")
-        end)
+        -- vim.keymap.set("n", "<leader>tw", function()
+        --     trouble.toggle("workspace_diagnostics")
+        -- end)
+        --
+        -- vim.keymap.set("n", "<leader>td", function()
+        --     trouble.toggle("document_diagnostics")
+        -- end)
 
         vim.keymap.set("n", "<C-n>", function()
-            require("trouble").next({ skip_groups = true, jump = true });
+            trouble.next({ skip_groups = true, jump = true });
         end)
 
         vim.keymap.set("n", "<C-p>", function()
-            require("trouble").previous({ skip_groups = true, jump = true });
+            trouble.prev({ skip_groups = true, jump = true });
         end)
     end
 }
