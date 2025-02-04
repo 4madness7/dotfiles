@@ -68,6 +68,7 @@
     swappy
     telegram-desktop
     tenacity
+    vlc
     whatsapp-for-linux
     zapzap
 
@@ -76,6 +77,7 @@
     kdePackages.bluedevil
     kdePackages.dolphin
     kdePackages.gwenview
+    kdePackages.kdenlive
     kdePackages.okular
 
     # VMs
