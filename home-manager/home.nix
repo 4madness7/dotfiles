@@ -1,4 +1,4 @@
-{  pkgs, ... }:
+{  pkgs, customPkgs, ... }:
 {
   # imports = [inputs.ags.homeManagerModules.default];
 
@@ -69,8 +69,7 @@
     telegram-desktop
     tenacity
     vlc
-    whatsapp-for-linux
-    zapzap
+    wasistlos # Whatsapp Client
 
     # Kde related
     kdePackages.ark
@@ -133,6 +132,7 @@
     swaynotificationcenter
     eww
     waybar
+    customPkgs.quickshell
 
     # Rofi stuff
     pinentry-rofi
