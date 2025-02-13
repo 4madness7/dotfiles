@@ -19,7 +19,7 @@
 [[destinations]]
 name = "home"
 path = "~"
-links = [ ".p10k.zsh", ".zshrc" ]
+links = [ ".zshrc" ]
 
 [[destinations]]
 name = "config"
@@ -37,6 +37,7 @@ links = [
     "qt5ct",
     "qt6ct",
     "rofi",
+    "starship.toml",
     "swappy",
     "swaync",
     "tmux",

@@ -40,6 +40,7 @@
         rofi-calc
       ];
   };
+  programs.starship.enable = true;
 
   home.packages = with pkgs; [
     # Apps
